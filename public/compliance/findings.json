@@ -1,0 +1,121 @@
+{
+  "generatedAt": "2026-08-18T22:21:52.417Z",
+  "source": "scripts/check-ifc.mjs",
+  "notes": "Semantic IFC attribute checks only. Geometry tessellation is unchanged. Thresholds are simplified demo rules, not a complete code review. Room area is the product of the doorless interior wall Length and the spanning wall Length because this export has no IFCSPACE entities.",
+  "findings": [
+    {
+      "id": "valid-exterior-door",
+      "modelId": "valid",
+      "fileName": "BasicHouse.ifc",
+      "status": "pass",
+      "ruleId": "VC-DEMO-01",
+      "clause": "Project rule — max single-leaf exterior door",
+      "title": "Exterior door width",
+      "description": "Exterior single-swing door leaves shall not exceed 1200 mm.",
+      "elementName": "Exterior door D10",
+      "globalId": "2DedXznHnDaeAWsrTB_q8y",
+      "highlightGlobalIds": [
+        "2DedXznHnDaeAWsrTB_q8y"
+      ],
+      "measured": 1010,
+      "required": 1200,
+      "unit": "mm",
+      "comparison": "max"
+    },
+    {
+      "id": "valid-window-width",
+      "modelId": "valid",
+      "fileName": "BasicHouse.ifc",
+      "status": "pass",
+      "ruleId": "VC-DEMO-02",
+      "clause": "Project rule — max window opening width",
+      "title": "Window width",
+      "description": "A single window opening shall not exceed 1500 mm in width.",
+      "elementName": "Front window 10x10",
+      "globalId": "2DedXznHnDaeAWsrTB_q8C",
+      "highlightGlobalIds": [
+        "2DedXznHnDaeAWsrTB_q8C"
+      ],
+      "measured": 1010,
+      "required": 1500,
+      "unit": "mm",
+      "comparison": "max"
+    },
+    {
+      "id": "valid-room-area",
+      "modelId": "valid",
+      "fileName": "BasicHouse.ifc",
+      "status": "pass",
+      "ruleId": "VC-DEMO-03",
+      "clause": "Project rule — min habitable room area",
+      "title": "Room area",
+      "description": "A habitable room shall provide at least 9.8 m² of floor area.",
+      "elementName": "East living room",
+      "globalId": "2DedXznHnDaeAWsrTB_qBe",
+      "highlightGlobalIds": [
+        "2DedXznHnDaeAWsrTB_qBe"
+      ],
+      "measured": 30.55,
+      "required": 9.8,
+      "unit": "m²",
+      "comparison": "min"
+    },
+    {
+      "id": "invalid-exterior-door",
+      "modelId": "invalid",
+      "fileName": "BasicHouseInvalid.ifc",
+      "status": "fail",
+      "ruleId": "VC-DEMO-01",
+      "clause": "Project rule — max single-leaf exterior door",
+      "title": "Exterior door width",
+      "description": "Exterior single-swing door leaves shall not exceed 1200 mm.",
+      "elementName": "Exterior door D10",
+      "globalId": "2DedXznHnDaeAWsrTB_q8y",
+      "highlightGlobalIds": [
+        "2DedXznHnDaeAWsrTB_q8y"
+      ],
+      "measured": 4200,
+      "required": 1200,
+      "unit": "mm",
+      "comparison": "max"
+    },
+    {
+      "id": "invalid-window-width",
+      "modelId": "invalid",
+      "fileName": "BasicHouseInvalid.ifc",
+      "status": "fail",
+      "ruleId": "VC-DEMO-02",
+      "clause": "Project rule — max window opening width",
+      "title": "Window width",
+      "description": "A single window opening shall not exceed 1500 mm in width.",
+      "elementName": "Front window 10x10",
+      "globalId": "2DedXznHnDaeAWsrTB_q8C",
+      "highlightGlobalIds": [
+        "2DedXznHnDaeAWsrTB_q8C"
+      ],
+      "measured": 4800,
+      "required": 1500,
+      "unit": "mm",
+      "comparison": "max"
+    },
+    {
+      "id": "invalid-room-area",
+      "modelId": "invalid",
+      "fileName": "BasicHouseInvalid.ifc",
+      "status": "fail",
+      "ruleId": "VC-DEMO-03",
+      "clause": "Project rule — min habitable room area",
+      "title": "Room area",
+      "description": "A habitable room shall provide at least 9.8 m² of floor area.",
+      "elementName": "East living room",
+      "globalId": "2DedXznHnDaeAWsrTB_qBe",
+      "highlightGlobalIds": [
+        "2DedXznHnDaeAWsrTB_qBe"
+      ],
+      "measured": 6.79,
+      "required": 9.8,
+      "unit": "m²",
+      "comparison": "min"
+    }
+  ]
+}

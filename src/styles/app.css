@@ -1,0 +1,323 @@
+:root {
+  --bg: #f4f4f2;
+  --bg-elevated: #ffffff;
+  --bg-panel: #ffffff;
+  --bg-hover: #ededeb;
+  --line: #e2e2de;
+  --text: #111111;
+  --muted: #6b6b67;
+  --fail: #e85d4c;
+  --fail-bg: rgba(232, 93, 76, 0.12);
+  --accent: #2563eb;
+  --pass-bg: rgba(31, 157, 100, 0.12);
+  --header-h: 52px;
+  --font: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: var(--header-h) 1fr;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-elevated);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mark {
+  width: 12px;
+  height: 12px;
+  background: var(--text);
+}
+
+.brand h1 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.brand span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px;
+  min-height: 0;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 0;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.card.fail {
+  border-color: var(--fail);
+}
+
+.card.pass {
+  border-color: var(--pass);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.card-head h2 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-head code {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.card-stage {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+}
+
+.card-viewer {
+  height: 100%;
+  min-height: 0;
+  background: #ecece8;
+}
+
+.card-viewer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.inspect {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 3;
+  max-width: min(280px, calc(100% - 20px));
+  padding: 10px 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  color: var(--text);
+  pointer-events: none;
+}
+
+.inspect strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.inspect span {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.inspect code {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+}
+
+.card-findings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.finding {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: inherit;
+  border-radius: 0;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.finding:hover {
+  background: var(--bg-hover);
+}
+
+.finding.selected {
+  border-color: var(--text);
+}
+
+.finding-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.finding-title {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.finding-element,
+.finding-values,
+.finding-delta {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.finding-element {
+  color: var(--text);
+}
+
+.finding-delta.fail {
+  color: var(--fail);
+  font-weight: 500;
+}
+
+.finding-delta.pass {
+  color: var(--pass);
+}
+
+.finding code {
+  font-family: var(--mono);
+  color: var(--text);
+}
+
+.finding-meter {
+  position: relative;
+  height: 4px;
+  margin-top: 8px;
+  background: var(--line);
+}
+
+.finding-meter-fill {
+  display: block;
+  height: 100%;
+}
+
+.finding-meter.fail .finding-meter-fill {
+  background: var(--fail);
+}
+
+.finding-meter.pass .finding-meter-fill {
+  background: var(--pass);
+}
+
+.finding-meter-limit {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: var(--text);
+  transform: translateX(-50%);
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+}
+
+.badge.fail {
+  color: var(--fail);
+  background: var(--fail-bg);
+}
+
+.badge.pass {
+  color: var(--pass);
+  background: var(--pass-bg);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background: rgba(244, 244, 242, 0.86);
+}
+
+.overlay-card {
+  width: min(420px, calc(100% - 48px));
+  padding: 20px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+}
+
+.overlay-card p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.progress {
+  height: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--text);
+  width: 0%;
+  transition: width 120ms linear;
+}
