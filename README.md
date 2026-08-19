@@ -1,5 +1,8 @@
 # Spatial Calculation Demo
 
+<img width="1265" height="623" alt="image" src="https://github.com/user-attachments/assets/7afb2869-7361-4ee0-8648-87d07a3d9993" />
+
+
 React + [That Open](https://thatopen.com/) BIM viewer. Two side-by-side models: a valid house IFC, and a staged invalid copy of the same house.
 
 **Proof of concept, not automated compliance.** Findings come from a small offline script on known elements. The invalid 3D view is drawn to match those numbers. The point is IFC in → quantities out → isolate a failing piece in WebGL, not a live code engine.
