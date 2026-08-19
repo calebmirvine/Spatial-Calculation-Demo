@@ -25,3 +25,13 @@ Each finding shows measured vs the limit, how far over/under it is, and a small 
 Both viewers load **one** file: `public/models/BasicHouse.ifc`. The invalid IFC is only for `check-ifc`. The mesh in the IFC is not remeshed; attributes change, then the invalid viewer overlays the fail.
 
 UI labels are English. The source IFC is a Swedish Revit export.
+
+---
+
+## Run locally
+```bash
+git clone https://github.com/calebmirvine/Spatial-Calculation-Demo.git
+cd Spatial-Calculation-Demo
+npm install
+npm run dev
+```
